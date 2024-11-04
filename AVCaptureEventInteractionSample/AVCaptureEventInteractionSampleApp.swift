@@ -11,7 +11,7 @@ import SwiftUI
 struct AVCaptureEventInteractionSampleApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CameraView()
         }
     }
 }
