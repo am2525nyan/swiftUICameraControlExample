@@ -15,7 +15,7 @@ import SwiftUI
 struct CameraPreview: UIViewControllerRepresentable {
     var session: AVCaptureSession
     var previewCALayer: CALayer
-    
+    var cameraModel: CameraModel
     func makeUIViewController(context: Context) -> UIViewController {
         let viewController = UIViewController()
         
@@ -29,7 +29,15 @@ struct CameraPreview: UIViewControllerRepresentable {
         previewLayer.frame = viewController.view.bounds
         viewController.view.layer.addSublayer(previewLayer)
         
-        let interaction = AVCaptureEventInteraction { _ in }
+    
+        let interaction = AVCaptureEventInteraction { event in
+             guard event.phase == .ended else { return }
+                 
+                    cameraModel.capturePhoto()
+                
+            }
+
+        
         viewController.view.addInteraction(interaction)
         
         return viewController

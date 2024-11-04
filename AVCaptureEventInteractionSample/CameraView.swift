@@ -18,7 +18,7 @@ struct CameraView: View {
     
     var body: some View {
         ZStack {
-            CameraPreview(session: cameraModel.session, previewCALayer: CALayer())
+            CameraPreview(session: cameraModel.session, previewCALayer: CALayer(), cameraModel: cameraModel)
                 .ignoresSafeArea()
             
             VStack {
